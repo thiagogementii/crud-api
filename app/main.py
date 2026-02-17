@@ -20,7 +20,6 @@ def write_data(data):
         json.dump(data, file, indent=4)
 
 
-# CREATE
 @app.post("/users")
 def create_user(user: dict):
     data = read_data()
@@ -34,13 +33,11 @@ def create_user(user: dict):
     return user
 
 
-# READ ALL
 @app.get("/users")
 def get_users():
     return read_data()
 
 
-# READ ONE
 @app.get("/users/{user_id}")
 def get_user(user_id: int):
     data = read_data()
@@ -52,7 +49,6 @@ def get_user(user_id: int):
     raise HTTPException(status_code=404, detail="User not found")
 
 
-# UPDATE
 @app.put("/users/{user_id}")
 def update_user(user_id: int, updated_user: dict):
     data = read_data()
@@ -67,7 +63,6 @@ def update_user(user_id: int, updated_user: dict):
     raise HTTPException(status_code=404, detail="User not found")
 
 
-# DELETE
 @app.delete("/users/{user_id}")
 def delete_user(user_id: int):
     data = read_data()
